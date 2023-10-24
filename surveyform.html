@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4; /* Set your desired background color */
+    }
+
+    form {
+        width: 400px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: cyan; /* Set your desired background color */
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: Arial, sans-serif; /* Set your desired font family */
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: Arial, sans-serif; /* Set your desired font family */
+        color: #fff; /* Set your desired text color */
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50; /* Set your desired background color */
+    }
+
+    input[type="reset"] {
+        background-color: #f44336; /* Set your desired background color */
+    }
+</style>
+</head>
+<body>
+<form id="surveyForm">
+    <h2>SURVEY FORM</h2>
+    <hr  width="100%" color="blue" /><br>
+
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required><br>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required><br>
+
+    <label for="country">Country:</label>
+    <select id="country" name="country" required>
+        <option value="">--Select Country--</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+        <option value="Canada">Canada</option>
+        <!-- Add more countries as needed -->
+    </select><br>
+
+    <label for="gender">Gender:</label><br>
+    <input type="checkbox" id="male" name="gender" value="male">
+    <label for="male">Male</label><br>
+    <input type="checkbox" id="female" name="gender" value="female">
+    <label for="female">Female</label><br>
+
+    <label for="profession">Profession:</label>
+    <input type="text" id="profession" name="profession" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="mobile">Mobile Number:</label>
+    <input type="tel" id="mobile" name="mobile" required><br>
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+</form>
+
+<script>
+    const form = document.getElementById('surveyForm');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        let formDataObject = {};
+        for (let key of formData.keys()) {
+            formDataObject[key] = formData.get(key);
+        }
+        const result = JSON.stringify(formDataObject, null, 2);
+        alert(result);
+        form.reset();
+    });
+</script>
+</body>
+</html>
